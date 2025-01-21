@@ -1,0 +1,29 @@
+
+
+header {
+    
+    form {
+        display: flex;
+        padding: 1rem;
+        width: 80%;
+        margin: auto;
+        justify-content: space-around;
+        align-items: center;
+        border: 2px solid #a8a8a8;
+        border-radius: 30px;
+        background: #c7c7c718;
+
+        label{
+            display: flex;
+            padding: 1rem;
+            gap: 1rem;
+            span{
+                width: 150px;
+            }
+            input{
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}
