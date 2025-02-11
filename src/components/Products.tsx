@@ -21,12 +21,14 @@ export function Products({ products }: { products: ProductType[] }) {
 
                     return (
                         <li key={product.id}>
-                            <div className='p-div'>
-                                <p>{product.description}</p>
-                            </div>
-                            <img src="https://http2.mlstatic.com/D_NQ_NP_975266-MLA52462532580_112022-O.webp" alt="bici" />
-                            <div>
+                            <div className='h2-div'>
                                 <h2>{product.title}</h2>
+                            </div>
+                            <div className='img-div'>
+                                <img src={product.image} alt={product.title} />
+                            </div>
+                            <div className='p-div'>
+                                <p>{product.description.slice(0, 100)}...</p>
                             </div>
                             <div>
                                 <h4>{product.category}</h4>

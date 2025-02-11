@@ -9,7 +9,7 @@ const { filters } = useFilters()
 // const { cart } = useCart()
 
     return (
-        <footer>
+        <footer className='footer'>
             <div>
             {
                 JSON.stringify(filters, null, 2)

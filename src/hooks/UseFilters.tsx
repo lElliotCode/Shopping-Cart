@@ -13,7 +13,6 @@ export function useFilters() {
         throw new Error('FiltersContext must be used within a FiltersProvider')
     }
     const { filters, setFilters } = context
-    console.log(filters.category)
 
     const filterProducts = (productsToFilter: ProductType[]) => {
         return productsToFilter.filter(product => {

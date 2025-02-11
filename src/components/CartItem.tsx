@@ -1,9 +1,9 @@
 import { CartItemType } from "../types/types.d"
 
-export function CartItem({ title, price, quantity, addToCart }: CartItemType) {
+export function CartItem({ image, title, price, quantity, addToCart }: CartItemType) {
     return (
         <li id="">
-            <img src='https://http2.mlstatic.com/D_NQ_NP_975266-MLA52462532580_112022-O.webp' alt={title} />
+            <img src={image} alt={title} />
             <div>
                 <strong>{title}</strong> - ${price}
             </div>

@@ -1,6 +1,18 @@
-import { products } from '../mocks/products.json'
 
-export type ProductType = typeof products[0]
+export type RatingType = {
+    rate: number;
+    count: number;
+};
+
+export type ProductType = {
+    id: number;
+    title: string;
+    price: number;
+    category: string;
+    image: string;
+    description: string;
+    rating: RatingType;
+};
 
 export type FiltersType = {
     category: string
@@ -13,7 +25,7 @@ export type FiltersContextType = {
 }
 
 export type CartItemType = {
-    thumbnail: string
+    image: string
     quantity: number | string
     title: string
     price: number | string

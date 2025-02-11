@@ -35,21 +35,19 @@ export function Filters() {
                         onChange={e => handleCategoryChange(e)}
                     >
                         <option value='all'>Todas</option>
-                        <option value='smartphones'>Smartphones</option>
-                        <option value='home-decoration'>Home-Decoration</option>
-                        <option value='groceries'>Groceries</option>
-                        <option value='skincare'>Skincare</option>
-                        <option value='fragrances'>Fragrances</option>
-                        <option value='laptops'>Laptops</option>
+                        <option value="men's clothing">Mens clothing</option>
+                        <option value='jewelery'>Jewelery</option>
+                        <option value='electronics'>Electronics</option>
+                        <option value="women's clothing">Womens clothing</option>
                     </select>
                 </div>
                 <div>
-                    <label htmlFor={minPriceID}>A partir de: {filters.minPrice}</label>
+                    <label htmlFor={minPriceID}>A partir de: ${filters.minPrice}</label>
                     <input
                         type='range'
                         id={minPriceID}
                         min={0}
-                        max={1000}
+                        max={999}
                         onChange={handleMinPriceChange}
                     />
                 </div>
