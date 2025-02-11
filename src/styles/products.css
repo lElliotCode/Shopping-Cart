@@ -1,5 +1,6 @@
 .products {
     width: 100%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,7 +10,7 @@
 .products ul {
     display: grid;
     grid-template-columns: repeat(auto-fit,
-            minmax(200px,
+            minmax(250px,
                 1fr));
     gap: 1rem;
 }
@@ -17,17 +18,37 @@
 .products li {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
+    justify-content: center;
     box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
     border-radius: 4px;
-    background: #111;
+    background: #11111198;
     color: #fff;
     padding: 1rem;
+
+    .btn-div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        button {
+            outline: none;
+        }
+    }
+
+    .p-div {
+        display: flex;
+        height: max-content;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+        padding: .5rem 0;
+    }
 }
 
-.products h3 {
-    margin: 0;
+.products h2 {
+    margin: 1rem 0;
+    font-size: 20px;
 }
 
 .products span {
@@ -35,13 +56,8 @@
     opacity: .9;
 }
 
-.products p {
-    border-radius: 4px;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    display: block;
-    object-fit: cover;
+.products img {
+    flex-grow: 1;
 }
 
 .products h4{
