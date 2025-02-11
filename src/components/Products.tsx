@@ -27,10 +27,7 @@ export function Products({ products }: { products: ProductType[] }) {
                             <div className='img-div'>
                                 <img src={product.image} alt={product.title} />
                             </div>
-                            <div className='p-div'>
-                                <p>{product.description.slice(0, 100)}...</p>
-                            </div>
-                            <div>
+                            <div className='info'>
                                 <h4>{product.category}</h4>
                                 <span>${product.price}</span>
                             </div>
