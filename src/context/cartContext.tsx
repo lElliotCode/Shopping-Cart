@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useReducer, ReactNode } from "react";
 import { ProductType } from "../types/types.d";
 
 type CartContextType = {
@@ -10,52 +10,70 @@ type CartContextType = {
 
 export const cartContext = createContext<CartContextType | undefined>(undefined)
 
-export function CartProvider({ children }: { children: ReactNode }) {
-    const [cart, setCart] = useState<ProductType[]>([])
+// Definimos el tipo del estado del carrito, en este un array de tipo productos[]
+type CartState = ProductType[]
 
-    const addToCart = (product: ProductType) => {
+//Definimos los tipos de las acciones del reducer
 
-        const productInCartIndex = cart.findIndex(item => item.id === product.id)
+type CartActions =
+    | { type: "ADD_TO_CART"; payload: ProductType }
+    | { type: "REMOVE_FROM_CART"; payload: { id: number } }
+    | { type: "CLEAR_CART" }
 
-        if (productInCartIndex >= 0) {
-            const newCart = structuredClone(cart)
+const initialState: CartState = []
 
-            if ('quantity' in newCart[productInCartIndex]) {
-                if (typeof newCart[productInCartIndex].quantity === 'number') {
-                    newCart[productInCartIndex].quantity++;
+const reducer = (state: CartState, action: CartActions) => {
+    switch (action.type) {
+        case 'ADD_TO_CART': {
+            const { id } = action.payload
+            const productInCartIndex = state.findIndex(item => item.id === id)
+
+            if (productInCartIndex >= 0) {
+                const newState = structuredClone(state)
+
+                if ('quantity' in newState[productInCartIndex]) {
+                    if (typeof newState[productInCartIndex].quantity === 'number') {
+                        newState[productInCartIndex].quantity++;
+                    }
                 }
+                return newState
             }
-            setCart(newCart)
-        } else {
-            setCart(prevState => [
-                ...prevState,
+            return [
+                ...state,
                 {
-                    ...product,
+                    ...action.payload,
                     quantity: 1
                 }
-            ])
+            ]
+
         }
+
+        case 'REMOVE_FROM_CART': {
+            const { id } = action.payload
+            console.log(action.payload)
+            return state.filter(item => item.id != id)
+            
+        }
+
+        case 'CLEAR_CART': {
+            return initialState
+        }
+    }
+}
+
+export function CartProvider({ children }: { children: ReactNode }) {
+    const [cart, dispatch] = useReducer(reducer, initialState)
+
+    const addToCart = (product: ProductType) => {
+        dispatch({ type: 'ADD_TO_CART', payload: product })
     }
 
     const removeFromCart = (product: ProductType) => {
-
-        const productInCartIndex = cart.findIndex(item => item.id === product.id)
-
-        if (productInCartIndex >= 0) {
-            setCart(prevState => prevState.filter(item => item.id != product.id))
-        } else {
-            setCart(prevState => [
-                ...prevState,
-                {
-                    ...product,
-                    quantity: 1
-                }
-            ])
-        }
+        dispatch({ type: 'REMOVE_FROM_CART', payload: product })
     }
 
     const clearCart = () => {
-        setCart([])
+        dispatch({ type: 'CLEAR_CART' })
     }
 
     return (
