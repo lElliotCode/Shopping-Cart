@@ -4,4 +4,4 @@ Este ejercicio es uno de muchos del Curso de React desde cero de Midudev(Miduliv
 
 - Ejemplo práctico de carrito de compras con useReducer, useContext, custom hooks y Typescript
 
-- Para correr el proyecto posicionarse en la carpeta 'E-commerce+Carrito' y usar el comando # npm run dev
+- Para correr el proyecto posicionarse en la carpeta raiz y usar el comando # npm run dev
